@@ -1,0 +1,7 @@
+{
+    "name": "user/js",
+    "require": {
+        "components/jquery": "^3.1",
+        "components/bootstrap": "^3.3"
+    }
+}
