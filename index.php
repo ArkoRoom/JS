@@ -2,39 +2,34 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Mini-jeux JS</title>
+    <title>Mini jeux JavaScript</title>
     <link rel="stylesheet" href="vendor/components/bootstrap/css/bootstrap.min.css" media="screen" title="no title" charset="utf-8">
+    <link rel="stylesheet" href="css/style.css" media="screen" title="no title" charset="utf-8">
   </head>
   <body>
     <div class="container">
-      <h3>Mini jeux en JavaScript</h3>
-      <p>
-        Bonjour et bienvenue dans ce mini-jeux du "c'est plus ou c'est moins" !
-        <br>
-        La règle est simple :
-        <br>
-        - vous disposez de 6 essais pour deviner le nombre choisis par la machine.
-        <br>
-        Veuillez remplir le champs ci dessous afin de soumettre votre réponse.
-        <br>
-        Un message vous retournera votre résultat.
-        <br>
-        Bonne chance !
-      </p>
-      <div class="col-md-6">
-        <form>
-          <div class="form-group">
-            <label for="answer">Votre réponse</label>
-            <input name="answer" type="number" class="form-control" id="answer" placeholder="Votre réponse...">
-          </div>
-          <button name="submitAnswer" type="button" class="btn btn-default" id="submitAnswer">Valider</button>
-        </form>
-      </div>
-      <div class="col-md-6">
-        <p class="textAnswer">
-
+      <div class="text-rules">
+        <h2>Mini-Jeux du C'est plus ou c'est moins !</h2>
+        <p>
+          Bienvenue dans ce Mini-Jeu ! <br>
+          La règle est simple. L'ordinateur a sélectionner un chiffre aléatoirement entre 1 et 100. <br>
+          Vous disposez de 6 éssais maximum pour trouver ce chiffre. <br>
+          Bonne chance !
         </p>
       </div>
+      <div class="answer-user">
+        <form>
+          <div class="form-group">
+            <label for="answerUser">Votre réponse</label>
+            <input type="number" name="answerUser" id="answerUser" value="">
+          </div>
+          <input type="button" name="validAnswer" id="validAnswer" value="Valider">
+        </form>
+      </div>
+      <div class="answer">
+
+      </div>
+      <input type="button" name="restart" id="restart" value="Rejouez">
     </div>
 
     <script src="vendor/components/jquery/jquery.min.js" charset="utf-8"></script>

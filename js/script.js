@@ -1,37 +1,41 @@
-$(function () {
+$("#restart").hide();
 
-  random = Math.floor((Math.random() * 100) + 1);
-  //console.log(random);
-  var answer = 0;
-  compteur = 0;
-  compteurFinal = 6;
+/*********** CODE RESTART ***********/
 
-  //On test si la valeur est bien récupérer
-  /*$('#submitAnswer').click(function () {
-    $('.textAnswer').append($('#answer').val() + "<br>");
-  });*/
+$("#restart").click(function () {
+  location.reload(true);
+});
 
-  // On commence le jeu
-    if ($('#submitAnswer').submit(function () {
-      {
-      //while ((answer != random) && (compteur < compteurFinal)) {
-        var answer = $('.textAnswer').append($('#answer').val());
-        compteur++;
-        if (answer < 1 || answer > 100) {
-          $('textAnswer').append("<p>Erreur ! Vous avez saisi " + answer + ".<br>Vous devez saisir un nombre entre 1 et 100.<br>C'était l'essai(s) n°" + compteur + " sur " + compteurFinal + ".");
-        }
-        else if (answer < random) {
-          $('textAnswer').append("<p>C'est plus que " + answer + ".<br>C'était l'essai(s) n°" + compteur + " sur " + compteurFinal + ".");
-        }
-        else if (answer > random) {
-          $('textAnswer').append("<p>C'est moins que " + answer + ".<br>C'était l'essai(s) n°" + compteur + " sur " + compteurFinal + ".");
-        }
-        else if (answer == random) {
-          $('textAnswer').append("<p>Bravo ! Le nombre à trouver était bien " + random + ".<br>Tu as réussis en " + compteur + " essai(s) sur " + compteurFinal + ".");
-        }
-        else {
-          $('textAnswer').append("<p>Dommage ! Le nombre à trouver était " + random + ".<br>Retente ta chance.");
-        }
-    //}
-  }}));
+/*********** CODE MINI JEUX ***********/
+
+var solution = Math.floor(Math.random() * 100) + 1;
+var count = 0;
+var finalCount = 6;
+
+var answerUser = $("#validAnswer").click(function () {
+  var answer = parseInt($("#answerUser").val());
+  while ((answerUser !== solution) && (count < finalCount)) {
+    count++;
+    if ((answer < 1) || (answer > 100)) {
+      $(".answer").append("<p>Erreur ! Vous avez saisis <strong>" + answer + "</strong><br>Veuillez saisir un nombre <strong>compris entre 1 et 100.</strong><br>C'était l'essai n°" + count + " sur " + finalCount + ".</p>")
+      break;
+    }
+    else if (answer < solution) {
+      $(".answer").append("<p>Et non ! C'est plus que <strong>" + answer + ".</strong><br>C'était l'essai n°" + count + " sur " + finalCount + ".</p>")
+      break;
+    }
+    else if (answer > solution) {
+      $(".answer").append("<p>Et non ! C'est moins que <strong>" + answer + ".</strong><br>C'était l'essai n°" + count + " sur " + finalCount + ".</p>")
+      break;
+    }
+    else if (answer === solution) {
+      $(".answer").append("<p>Bravo ! Le nombre a trouvé était bien <strong>" + solution + ".</strong><br>Vous avez trouvé en " + count + " éssai(s) sur " + finalCount + ".<br>Vous pouvez rejouer en cliquant sur le bouton <strong>'Rejouez'.</strong></p>")
+      $("#restart").show();
+      break;
+    }
+  }
+  if (count === finalCount) {
+    $(".answer").append("<p>Dommage ! Vous avez utilisé vos " + finalCount + " éssais.<br>Le chiffre à trouver été <strong>" + solution + ".</strong><br>Retentez votre chance !</p>")
+    $("#restart").show();
+  }
 });
